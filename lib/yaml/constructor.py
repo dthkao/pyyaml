@@ -497,7 +497,7 @@ class FullConstructor(SafeConstructor):
             except ImportError, exc:
                 raise ConstructorError("while constructing a Python module", mark,
                         "cannot find module %r (%s)" % (name.encode('utf-8'), exc), mark)
-        if name not in sys.modules:
+        if not name in sys.modules:
             raise ConstructorError("while constructing a Python module", mark,
                     "module %r is not imported" % name.encode('utf-8'), mark)
         return sys.modules[name]
@@ -517,7 +517,7 @@ class FullConstructor(SafeConstructor):
             except ImportError, exc:
                 raise ConstructorError("while constructing a Python object", mark,
                         "cannot find module %r (%s)" % (module_name.encode('utf-8'), exc), mark)
-        if module_name not in sys.modules:
+        if not module_name in sys.modules:
             raise ConstructorError("while constructing a Python object", mark,
                     "module %r is not imported" % module_name.encode('utf-8'), mark)
         module = sys.modules[module_name]
